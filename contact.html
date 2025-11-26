@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - JoTouch by Lara</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>🇯🇴 JoTouch by Lara</h1>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="Search for products..." id="searchInput" data-key="searchPlaceholder">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" data-key="home">Home</a>
+                <a href="about.html" class="nav-link" data-key="about">About Us</a>
+                <a href="contact.html" class="nav-link active" data-key="contact">Contact Us</a>
+                <a href="comments.html" class="nav-link">Comments</a>
+                <a href="favorites.html" class="nav-link">
+                    <i class="fas fa-heart"></i>
+                    <span class="cart-count" id="favoritesCount">0</span>
+                </a>
+                <a href="cart.html" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="language-switcher" onclick="switchLanguage(currentLanguage === 'en' ? 'ar' : 'en')" id="langBtn">
+                    <i class="fas fa-language"></i> <span id="langText">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h1 class="page-title" data-key="contactTitle">Contact Us</h1>
+            <p class="contact-subtitle" data-key="contactSubtitle">We'd love to hear from you! Get in touch with us.</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 data-key="contactEmail">Email</h3>
+                        <p><a href="mailto:laratt0088@gmail.com">laratt0088@gmail.com</a></p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 data-key="contactLocation">Location</h3>
+                        <p>Zarqa, Jordan</p>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName" data-key="fullName">Full Name *</label>
+                            <input type="text" id="contactName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail" data-key="email">Email *</label>
+                            <input type="email" id="contactEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject" data-key="subject">Subject *</label>
+                            <input type="text" id="contactSubject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage" data-key="message">Message *</label>
+                            <textarea id="contactMessage" name="message" rows="6" required data-key="message"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-key="sendMessage">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-key="aboutUs">About Us</h3>
+                    <p data-key="aboutUsText">Your trusted marketplace for authentic Jordanian products. Supporting local businesses and artisans.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-key="quickLinks">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" data-key="home">Home</a></li>
+                        <li><a href="about.html" data-key="about">About Us</a></li>
+                        <li><a href="contact.html" data-key="contact">Contact Us</a></li>
+                        <li><a href="comments.html">Comments</a></li>
+                        <li><a href="cart.html" data-key="cart">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-key="contact">Contact</h3>
+                    <p>Email: <a href="mailto:laratt0088@gmail.com">laratt0088@gmail.com</a></p>
+                    <p data-key="contactLocation">Location: Zarqa, Jordan</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 JoTouch by Lara. <span data-key="allRightsReserved">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="currency.js"></script>
+    <script src="script.js"></script>
+    <script src="navigation.js"></script>
+    <script>
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const currentLang = localStorage.getItem('language') || 'en';
+            const message = currentLang === 'ar' ? 'شكراً لتواصلك معنا! سنرد عليك قريباً.' : 'Thank you for contacting us! We will get back to you soon.';
+            alert(message);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
+

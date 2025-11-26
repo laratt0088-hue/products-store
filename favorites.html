@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Products - JoTouch by Lara</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>🇯🇴 JoTouch by Lara</h1>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="Search for products..." id="searchInput" data-key="searchPlaceholder">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" data-key="home">Home</a>
+                <a href="about.html" class="nav-link" data-key="about">About Us</a>
+                <a href="contact.html" class="nav-link" data-key="contact">Contact Us</a>
+                <a href="comments.html" class="nav-link">Comments</a>
+                <a href="favorites.html" class="nav-link active">
+                    <i class="fas fa-heart"></i>
+                    <span class="cart-count" id="favoritesCount">0</span>
+                </a>
+                <a href="cart.html" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="language-switcher" onclick="switchLanguage(currentLanguage === 'en' ? 'ar' : 'en')" id="langBtn">
+                    <i class="fas fa-language"></i> <span id="langText">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Favorites Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="page-title" data-key="favoriteProducts">Favorite Products</h2>
+            <div class="products-grid" id="favoritesGrid">
+                <!-- Favorite products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-key="aboutUs">About Us</h3>
+                    <p data-key="aboutUsText">Your trusted marketplace for authentic Jordanian products. Supporting local businesses and artisans.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-key="quickLinks">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" data-key="home">Home</a></li>
+                        <li><a href="about.html" data-key="about">About Us</a></li>
+                        <li><a href="contact.html" data-key="contact">Contact Us</a></li>
+                        <li><a href="favorites.html" data-key="favorites">Favorites</a></li>
+                        <li><a href="cart.html" data-key="cart">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-key="contact">Contact</h3>
+                    <p>Email: <a href="mailto:laratt0088@gmail.com">laratt0088@gmail.com</a></p>
+                    <p data-key="contactLocation">Location: Zarqa, Jordan</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 JoTouch by Lara. <span data-key="allRightsReserved">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="currency.js"></script>
+    <script src="script.js"></script>
+    <script src="favorites.js"></script>
+    <script src="navigation.js"></script>
+</body>
+</html>
+

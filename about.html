@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - JoTouch by Lara</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>🇯🇴 JoTouch by Lara</h1>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="Search for products..." id="searchInput" data-key="searchPlaceholder">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" data-key="home">Home</a>
+                <a href="about.html" class="nav-link active" data-key="about">About Us</a>
+                <a href="contact.html" class="nav-link" data-key="contact">Contact Us</a>
+                <a href="comments.html" class="nav-link">Comments</a>
+                <a href="favorites.html" class="nav-link">
+                    <i class="fas fa-heart"></i>
+                    <span class="cart-count" id="favoritesCount">0</span>
+                </a>
+                <a href="cart.html" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="language-switcher" onclick="switchLanguage(currentLanguage === 'en' ? 'ar' : 'en')" id="langBtn">
+                    <i class="fas fa-language"></i> <span id="langText">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h1 class="page-title" data-key="aboutTitle">About JoTouch by Lara</h1>
+                
+                <div class="about-jordan">
+                    <p data-key="aboutJordan">Jordan, a land of ancient history and rich cultural heritage, stands as a bridge between the East and West. From the rose-red city of Petra, one of the New Seven Wonders of the World, to the therapeutic waters of the Dead Sea, Jordan is a treasure trove of natural beauty and historical significance. Our country is renowned for its warm hospitality, traditional craftsmanship, and authentic products that have been passed down through generations. The Jordanian heritage encompasses exquisite handwoven textiles, intricate pottery, aromatic spices, natural cosmetics from the Dead Sea, and traditional foods that reflect the diverse cultural influences that have shaped our nation. At JoTouch by Lara, we celebrate this rich heritage by bringing you authentic Jordanian products that tell the story of our land, our people, and our traditions.</p>
+                </div>
+                
+                <div class="about-intro">
+                    <p data-key="aboutContent">Welcome to JoTouch by Lara, your trusted destination for authentic Jordanian products. Located in the heart of Zarqa, Jordan, we are passionate about bringing you the finest local products that showcase the rich heritage and craftsmanship of our beautiful country.</p>
+                </div>
+
+                <div class="about-founder">
+                    <h2 data-key="aboutFounder">About the Founder</h2>
+                    <p data-key="aboutFounderText">JoTouch by Lara was founded by Lara AL-BLWI, a dedicated student from Um Al-Darda Secondary School for Girls. Lara is part of the first generation in the BTEC system, graduating with the class of 2008. Her passion for Jordanian heritage and commitment to supporting local artisans inspired the creation of this platform to showcase and promote authentic Jordanian products.</p>
+                </div>
+
+                <div class="about-mission">
+                    <h2 data-key="aboutMission">Our Mission</h2>
+                    <p data-key="aboutMissionText">At JoTouch by Lara, we are committed to supporting local artisans and businesses while providing our customers with high-quality, authentic Jordanian products. From traditional handicrafts to natural cosmetics and delicious food items, we carefully curate each product to ensure it meets our standards of excellence.</p>
+                </div>
+
+                <div class="about-location">
+                    <h2 data-key="aboutLocation">Location</h2>
+                    <p data-key="aboutLocationText">Based in Zarqa, Jordan, we are proud to be part of the local business community and contribute to the growth of Jordan's economy.</p>
+                    <div class="location-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Zarqa, Jordan</span>
+                    </div>
+                </div>
+
+                <div class="about-values">
+                    <div class="value-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>Authenticity</h3>
+                        <p>We source only genuine Jordanian products</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Support Local</h3>
+                        <p>Supporting local artisans and businesses</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Quality</h3>
+                        <p>High-quality products you can trust</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-key="aboutUs">About Us</h3>
+                    <p data-key="aboutUsText">Your trusted marketplace for authentic Jordanian products. Supporting local businesses and artisans.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-key="quickLinks">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" data-key="home">Home</a></li>
+                        <li><a href="about.html" data-key="about">About Us</a></li>
+                        <li><a href="contact.html" data-key="contact">Contact Us</a></li>
+                        <li><a href="comments.html">Comments</a></li>
+                        <li><a href="cart.html" data-key="cart">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-key="contact">Contact</h3>
+                    <p>Email: <a href="mailto:laratt0088@gmail.com">laratt0088@gmail.com</a></p>
+                    <p data-key="contactLocation">Location: Zarqa, Jordan</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 JoTouch by Lara. <span data-key="allRightsReserved">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="currency.js"></script>
+    <script src="script.js"></script>
+    <script src="navigation.js"></script>
+</body>
+</html>
+

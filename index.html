@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoTouch by Lara - Jordanian Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>🇯🇴 JoTouch by Lara</h1>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="Search for products..." id="searchInput" data-key="searchPlaceholder">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active" data-key="home">Home</a>
+                <a href="about.html" class="nav-link" data-key="about">About Us</a>
+                <a href="contact.html" class="nav-link" data-key="contact">Contact Us</a>
+                <a href="comments.html" class="nav-link">Comments</a>
+                <a href="favorites.html" class="nav-link">
+                    <i class="fas fa-heart"></i>
+                    <span class="cart-count" id="favoritesCount">0</span>
+                </a>
+                <a href="cart.html" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="language-switcher" onclick="switchLanguage(currentLanguage === 'en' ? 'ar' : 'en')" id="langBtn">
+                    <i class="fas fa-language"></i> <span id="langText">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2 data-key="heroTitle">Discover Authentic Jordanian Products</h2>
+            <p data-key="heroSubtitle">Support local artisans and enjoy quality products from the heart of Jordan</p>
+            <button class="cta-button" onclick="scrollToProducts()" data-key="shopNow">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="categories">
+        <div class="container">
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="all" data-key="allProducts">All Products</button>
+                <button class="category-btn" data-category="food" data-key="food">Food & Beverages</button>
+                <button class="category-btn" data-category="handicrafts" data-key="handicrafts">Handicrafts</button>
+                <button class="category-btn" data-category="cosmetics" data-key="cosmetics">Cosmetics</button>
+                <button class="category-btn" data-category="clothing" data-key="clothing">Clothing</button>
+                <button class="category-btn" data-category="accessories" data-key="accessories">Accessories</button>
+                <button class="price-filter-btn" id="priceFilterBtn" title="Filter by Price">
+                    <i class="fas fa-filter"></i>
+                    <span data-key="filterByPrice">Filter by Price</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Filter Modal -->
+    <div class="price-filter-modal" id="priceFilterModal">
+        <div class="price-filter-content">
+            <div class="price-filter-header">
+                <h3 data-key="filterByPrice">Filter by Price</h3>
+                <button class="close-filter-btn" id="closePriceFilter">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="price-filter-body">
+                <div class="price-input-group">
+                    <label for="minPrice" data-key="minPrice">Minimum Price (JOD)</label>
+                    <input type="number" id="minPrice" min="0" step="0.01" placeholder="0.00">
+                </div>
+                <div class="price-input-group">
+                    <label for="maxPrice" data-key="maxPrice">Maximum Price (JOD)</label>
+                    <input type="number" id="maxPrice" min="0" step="0.01" placeholder="100.00">
+                </div>
+                <div class="price-range-display">
+                    <span id="priceRangeDisplay" data-key="priceRange">Price Range: <span id="currentPriceRange">All Prices</span></span>
+                </div>
+                <div class="price-filter-actions">
+                    <button class="apply-filter-btn" id="applyPriceFilter" data-key="applyFilter">Apply Filter</button>
+                    <button class="clear-filter-btn" id="clearPriceFilter" data-key="clearFilter">Clear Filter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section" id="productsSection">
+        <div class="container">
+            <h2 class="section-title" data-key="featuredProducts">Featured Products</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top-btn" id="scrollToTopBtn" title="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-key="aboutUs">About Us</h3>
+                    <p data-key="aboutUsText">Your trusted marketplace for authentic Jordanian products. Supporting local businesses and artisans.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-key="quickLinks">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" data-key="home">Home</a></li>
+                        <li><a href="about.html" data-key="about">About Us</a></li>
+                        <li><a href="contact.html" data-key="contact">Contact Us</a></li>
+                        <li><a href="comments.html">Comments</a></li>
+                        <li><a href="cart.html" data-key="cart">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-key="contact">Contact</h3>
+                    <p>Email: <a href="mailto:laratt0088@gmail.com">laratt0088@gmail.com</a></p>
+                    <p data-key="contactLocation">Location: Zarqa, Jordan</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 JoTouch by Lara. <span data-key="allRightsReserved">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="currency.js"></script>
+    <script src="script.js"></script>
+    <script src="navigation.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - JoTouch by Lara</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>🇯🇴 JoTouch by Lara</h1>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="Search for products..." id="searchInput" data-key="searchPlaceholder">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" data-key="home">Home</a>
+                <a href="about.html" class="nav-link" data-key="about">About Us</a>
+                <a href="contact.html" class="nav-link" data-key="contact">Contact Us</a>
+                <a href="comments.html" class="nav-link">Comments</a>
+                <a href="favorites.html" class="nav-link">
+                    <i class="fas fa-heart"></i>
+                    <span class="cart-count" id="favoritesCount">0</span>
+                </a>
+                <a href="cart.html" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="language-switcher" onclick="switchLanguage(currentLanguage === 'en' ? 'ar' : 'en')" id="langBtn">
+                    <i class="fas fa-language"></i> <span id="langText">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <h2 class="page-title" data-key="checkout">Checkout</h2>
+            <div class="checkout-container">
+                <div class="checkout-form-container">
+                    <form id="checkoutForm" class="checkout-form">
+                        <h3 data-key="shippingInfo">Shipping Information</h3>
+                        <div class="form-group">
+                            <label for="fullName" data-key="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-key="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-key="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" data-key="address">Address *</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city" data-key="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="postalCode" data-key="postalCode">Postal Code *</label>
+                                <input type="text" id="postalCode" name="postalCode" required>
+                            </div>
+                        </div>
+
+                        <h3 data-key="paymentInfo">Payment Information</h3>
+                        <div class="form-group">
+                            <label for="cardNumber" data-key="cardNumber">Card Number *</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate" data-key="expiryDate">Expiry Date *</label>
+                                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv" data-key="cvv">CVV *</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-order-btn" data-key="placeOrder">Place Order</button>
+                    </form>
+                </div>
+                <div class="checkout-summary">
+                    <h3 data-key="orderSummary">Order Summary</h3>
+                    <div class="order-items" id="orderItems">
+                        <!-- Order items will be loaded here -->
+                    </div>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span data-key="subtotal">Subtotal:</span>
+                            <span id="checkoutSubtotal">0.00 JOD</span>
+                        </div>
+                        <div class="summary-row">
+                            <span data-key="shipping">Shipping:</span>
+                            <span id="checkoutShipping">5.00 JOD</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span data-key="total">Total:</span>
+                            <span id="checkoutTotal">5.00 JOD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 data-key="orderPlaced">Order Placed Successfully!</h2>
+            <p data-key="orderMessage">Thank you for your purchase. Your order has been confirmed.</p>
+            <button onclick="window.location.href='index.html'" class="back-home-btn" data-key="backToHome">Back to Home</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Your trusted marketplace for authentic Jordanian products. Supporting local businesses and artisans.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#productsSection">Products</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@jordanianmarketplace.com</p>
+                    <p>Phone: +962 6 123 4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Jordanian Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="currency.js"></script>
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+    <script src="navigation.js"></script>
+</body>
+</html>
+

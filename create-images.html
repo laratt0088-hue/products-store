@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create All Product Images - JoTouch by Lara</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c5f2d 0%, #97bc62 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #2c5f2d;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #2c5f2d;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        .info-box h3 {
+            color: #2c5f2d;
+            margin-bottom: 10px;
+        }
+        .info-box ol {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        .info-box li {
+            margin-bottom: 8px;
+        }
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .generate-btn {
+            background: #2c5f2d;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(44, 95, 45, 0.3);
+        }
+        .generate-btn:hover {
+            background: #97bc62;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 95, 45, 0.4);
+        }
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        .product-list {
+            margin-top: 30px;
+            max-height: 400px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .product-item:last-child {
+            border-bottom: none;
+        }
+        .product-info {
+            flex: 1;
+        }
+        .product-name {
+            font-weight: 600;
+            color: #2c5f2d;
+        }
+        .product-details {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 3px;
+        }
+        .check-icon {
+            color: #28a745;
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇯🇴 Create Product Images</h1>
+        <p class="subtitle">Generate all 16 product placeholder images for JoTouch by Lara</p>
+        
+        <div class="info-box">
+            <h3>📋 Instructions:</h3>
+            <ol>
+                <li>Click the button below to generate and download all 16 product images</li>
+                <li>Images will download automatically one by one</li>
+                <li>Save all images to the <strong>images</strong> folder in your project</li>
+                <li>Make sure each image is named exactly: <code>product-1.jpg</code>, <code>product-2.jpg</code>, etc.</li>
+                <li>Replace these placeholders with your actual product photos when ready</li>
+            </ol>
+        </div>
+
+        <div class="button-container">
+            <button class="generate-btn" onclick="generateAllImages()">
+                🖼️ Generate & Download All 16 Images
+            </button>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div class="product-list">
+            <h3 style="margin-bottom: 15px; color: #2c5f2d;">Product Images List:</h3>
+            <div id="productList"></div>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, nameAr: "خليط الزعتر", nameEn: "Za'atar Spice Blend", category: "Food & Beverages", color: "#8B4513" },
+            { id: 2, nameAr: "زيت الزيتون (500 مل)", nameEn: "Olive Oil (500ml)", category: "Food & Beverages", color: "#556B2F" },
+            { id: 3, nameAr: "كوفية منسوجة يدوياً", nameEn: "Handwoven Keffiyeh", category: "Accessories", color: "#2F4F4F" },
+            { id: 4, nameAr: "قناع طين البحر الميت", nameEn: "Dead Sea Mud Mask", category: "Cosmetics", color: "#3D2817" },
+            { id: 5, nameAr: "فخار يدوي الصنع", nameEn: "Handmade Ceramic Pottery", category: "Handicrafts", color: "#CD853F" },
+            { id: 6, nameAr: "تمر أردني (1 كيلو)", nameEn: "Jordanian Dates (1kg)", category: "Food & Beverages", color: "#8B4513" },
+            { id: 7, nameAr: "شال مطرز تقليدي", nameEn: "Traditional Embroidery Shawl", category: "Clothing", color: "#8B008B" },
+            { id: 8, nameAr: "مقشر ملح البحر الميت", nameEn: "Dead Sea Salt Scrub", category: "Cosmetics", color: "#4682B4" },
+            { id: 9, nameAr: "سلة منسوجة يدوياً", nameEn: "Handwoven Basket", category: "Handicrafts", color: "#A0522D" },
+            { id: 10, nameAr: "عسل أردني (500 جرام)", nameEn: "Jordanian Honey (500g)", category: "Food & Beverages", color: "#FFD700" },
+            { id: 11, nameAr: "عباية تقليدية", nameEn: "Traditional Abaya", category: "Clothing", color: "#000000" },
+            { id: 12, nameAr: "ماء الورد (250 مل)", nameEn: "Rose Water (250ml)", category: "Cosmetics", color: "#FFB6C1" },
+            { id: 13, nameAr: "حقيبة جلدية يدوية الصنع", nameEn: "Handmade Leather Bag", category: "Accessories", color: "#654321" },
+            { id: 14, nameAr: "مزيج القهوة الأردنية", nameEn: "Jordanian Coffee Blend", category: "Food & Beverages", color: "#3E2723" },
+            { id: 15, nameAr: "قطعة فسيفساء فنية", nameEn: "Mosaic Art Piece", category: "Handicrafts", color: "#FF6347" },
+            { id: 16, nameAr: "صنادل تقليدية", nameEn: "Traditional Sandals", category: "Accessories", color: "#8B4513" }
+        ];
+
+        // Display product list
+        function displayProductList() {
+            const list = document.getElementById('productList');
+            list.innerHTML = products.map(p => `
+                <div class="product-item" id="product-${p.id}">
+                    <div class="product-info">
+                        <div class="product-name">Product ${p.id}: ${p.nameEn}</div>
+                        <div class="product-details">${p.nameAr} - ${p.category}</div>
+                    </div>
+                    <span class="check-icon" id="check-${p.id}" style="display: none;">✓</span>
+                </div>
+            `).join('');
+        }
+
+        // Generate a single product image
+        function generateImage(product) {
+            return new Promise((resolve) => {
+                const canvas = document.createElement('canvas');
+                canvas.width = 400;
+                canvas.height = 400;
+                const ctx = canvas.getContext('2d');
+                
+                // Background with gradient
+                const gradient = ctx.createLinearGradient(0, 0, 400, 400);
+                gradient.addColorStop(0, product.color);
+                gradient.addColorStop(1, darkenColor(product.color, 0.3));
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, 400, 400);
+                
+                // Decorative pattern
+                ctx.fillStyle = 'rgba(255,255,255,0.1)';
+                for (let i = 0; i < 20; i++) {
+                    ctx.beginPath();
+                    ctx.arc(Math.random() * 400, Math.random() * 400, Math.random() * 30, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                // Product ID badge
+                ctx.fillStyle = 'rgba(44, 95, 45, 0.9)';
+                ctx.fillRect(20, 20, 80, 80);
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 36px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(`#${product.id}`, 60, 60);
+                
+                // Product name (English)
+                ctx.fillStyle = 'rgba(255,255,255,0.95)';
+                ctx.font = 'bold 28px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(product.nameEn, 200, 180);
+                
+                // Category
+                ctx.fillStyle = 'rgba(255,255,255,0.8)';
+                ctx.font = '18px Arial';
+                ctx.fillText(product.category, 200, 220);
+                
+                // Arabic name
+                ctx.fillStyle = 'rgba(255,255,255,0.9)';
+                ctx.font = '20px Arial';
+                ctx.fillText(product.nameAr, 200, 280);
+                
+                // Border
+                ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+                ctx.lineWidth = 4;
+                ctx.strokeRect(0, 0, 400, 400);
+                
+                canvas.toBlob(function(blob) {
+                    resolve(blob);
+                }, 'image/jpeg', 0.92);
+            });
+        }
+
+        function darkenColor(color, amount) {
+            const num = parseInt(color.replace("#", ""), 16);
+            const r = Math.max(0, ((num >> 16) & 0xFF) * (1 - amount));
+            const g = Math.max(0, ((num >> 8) & 0xFF) * (1 - amount));
+            const b = Math.max(0, (num & 0xFF) * (1 - amount));
+            return `rgb(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)})`;
+        }
+
+        // Download a single image
+        function downloadImage(blob, filename) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Generate and download all images
+        async function generateAllImages() {
+            const status = document.getElementById('status');
+            status.className = 'status';
+            status.textContent = 'Generating images... Please wait.';
+            status.style.display = 'block';
+            
+            try {
+                for (let i = 0; i < products.length; i++) {
+                    const product = products[i];
+                    status.textContent = `Generating image ${i + 1} of ${products.length}: ${product.nameEn}...`;
+                    
+                    const blob = await generateImage(product);
+                    await new Promise(resolve => setTimeout(resolve, 300)); // Small delay
+                    downloadImage(blob, `product-${product.id}.jpg`);
+                    
+                    // Show checkmark
+                    const check = document.getElementById(`check-${product.id}`);
+                    if (check) check.style.display = 'inline';
+                    
+                    // Small delay between downloads
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+                
+                status.className = 'status success';
+                status.innerHTML = '✅ <strong>Success!</strong> All 16 images have been generated and downloaded. Please save them to the <strong>images</strong> folder in your project.';
+            } catch (error) {
+                status.className = 'status error';
+                status.textContent = '❌ Error generating images. Please try again.';
+                console.error(error);
+            }
+        }
+
+        // Initialize
+        displayProductList();
+    </script>
+</body>
+</html>
+

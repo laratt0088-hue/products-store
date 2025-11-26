@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments - JoTouch by Lara</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>🇯🇴 JoTouch by Lara</h1>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="Search for products..." id="searchInput" data-key="searchPlaceholder">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" data-key="home">Home</a>
+                <a href="about.html" class="nav-link" data-key="about">About Us</a>
+                <a href="contact.html" class="nav-link" data-key="contact">Contact Us</a>
+                <a href="comments.html" class="nav-link active" data-key="comments">Comments</a>
+                <a href="favorites.html" class="nav-link">
+                    <i class="fas fa-heart"></i>
+                    <span class="cart-count" id="favoritesCount">0</span>
+                </a>
+                <a href="cart.html" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="language-switcher" onclick="switchLanguage(currentLanguage === 'en' ? 'ar' : 'en')" id="langBtn">
+                    <i class="fas fa-language"></i> <span id="langText">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Comments Section -->
+    <section class="comments-section">
+        <div class="container">
+            <h1 class="page-title" data-key="commentsTitle">Comments & Reviews</h1>
+            
+            <!-- Pre-written Reviews (Admin Reviews) -->
+            <div class="reviews-section">
+                <h2 class="section-subtitle" data-key="featuredReviews">Featured Reviews</h2>
+                <div class="comments-grid" id="adminReviews">
+                    <!-- Admin reviews will be loaded here -->
+                </div>
+            </div>
+
+            <!-- User Comments Section -->
+            <div class="user-comments-section">
+                <h2 class="section-subtitle" data-key="customerReviews">Customer Reviews</h2>
+                <div class="comments-grid" id="userComments">
+                    <!-- User comments will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Submit Comment Form -->
+            <div class="comment-form-container">
+                <h2 class="section-subtitle" data-key="shareExperience">Share Your Experience</h2>
+                <form class="comment-form" id="commentForm">
+                    <div class="form-group">
+                        <label for="userName" data-key="yourName">Your Name</label>
+                        <input type="text" id="userName" name="userName" required data-key="enterName" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="userComment" data-key="yourComment">Your Comment</label>
+                        <textarea id="userComment" name="userComment" rows="5" required data-key="shareThoughts" placeholder="Share your thoughts about our website..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewImage" data-key="uploadImage">Upload Image (Optional)</label>
+                        <input type="file" id="reviewImage" name="reviewImage" accept="image/*" onchange="previewReviewImage(event)">
+                        <div class="image-preview-container" id="imagePreviewContainer" style="display: none;">
+                            <img id="imagePreview" src="" alt="Preview">
+                            <button type="button" class="remove-image-btn" onclick="removeImagePreview()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> <span data-key="submitReview">Submit Review</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-key="aboutUs">About Us</h3>
+                    <p data-key="aboutUsText">Your trusted marketplace for authentic Jordanian products. Supporting local businesses and artisans.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-key="quickLinks">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" data-key="home">Home</a></li>
+                        <li><a href="about.html" data-key="about">About Us</a></li>
+                        <li><a href="contact.html" data-key="contact">Contact Us</a></li>
+                        <li><a href="comments.html">Comments</a></li>
+                        <li><a href="cart.html" data-key="cart">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-key="contact">Contact</h3>
+                    <p>Email: <a href="mailto:laratt0088@gmail.com">laratt0088@gmail.com</a></p>
+                    <p data-key="contactLocation">Location: Zarqa, Jordan</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 JoTouch by Lara. <span data-key="allRightsReserved">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="currency.js"></script>
+    <script src="script.js"></script>
+    <script src="comments.js"></script>
+    <script src="navigation.js"></script>
+</body>
+</html>
+
